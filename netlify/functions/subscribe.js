@@ -9,7 +9,8 @@ export const handler = async (event, context) => {
     const cloudronDomain = process.env.CLOUDRON_DOMAIN;
     const cloudronToken = process.env.CLOUDRON_TOKEN;
     const email = event.queryStringParameters.email;
-    createUserAndSendEmail(cloudronDomain, cloudronToken, email)
+    console.log(`Creating user with email ${email} on ${cloudronDomain}`);
+    await createUserAndSendEmail(cloudronDomain, cloudronToken, email)
     return {
       body: JSON.stringify({}),
       statusCode: 200
